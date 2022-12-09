@@ -156,7 +156,8 @@ const init = async () => {
             pug: require("pug")
         },
         relativeTo: `${__dirname}/template-engine`,
-        path: "views"
+        path: "views",
+        partialsPath: "views/partials"
     })
 
     //render templates
