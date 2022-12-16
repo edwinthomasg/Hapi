@@ -8,8 +8,19 @@ const payloadSchema = Joi.object({
 const init = async() => {
     const server = hapi.server({
         port: 4000,
-        host: "localhost"
+        host: "localhost",
+        routes: {
+            cors: true,
+        }
     })
+    const io = require("socket.io")(server.listener, {
+        cors: {
+            origin: "http://localhost:3000",
+          }
+    })
+    io.on("connection", (socket) => {
+        console.log("user connected")
+    } )
     await server.start()
     console.log("server running on %s",server.info.uri)
 
@@ -40,6 +51,8 @@ const init = async() => {
         
         }
     })
+
+   
 }
 
 init()

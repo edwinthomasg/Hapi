@@ -11,6 +11,7 @@ const dataSchema = joi.object({
     age: joi.number().min(18).max(60),
     company: joi.string()
 })
+console.log(dataSchema)
 const customPlugin = {
     name: "customPlugin",
     version: "1.0.0",
